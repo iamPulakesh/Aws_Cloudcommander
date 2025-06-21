@@ -70,8 +70,8 @@ BOT_TOKEN=your_discord_bot_token
 
 ### 3. Install Dependencies
 
-Make sure you have Python 3.10+
-It is recommended to make a virtual environment and work inside that.
+- Make sure you have Python 3.10+
+- It is recommended to make a virtual environment and work inside that.
 ```bash
 python -m venv venv
 source venv\Scripts\activate
