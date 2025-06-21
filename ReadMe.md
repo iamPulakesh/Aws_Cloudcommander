@@ -78,22 +78,22 @@ source venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### 4. Run the Bot
+### 4. Run the bot
 
 ```bash
 python bot.py
 ```
 
-## Usage Guide
+## Usage guide
 
-### First-Time Setup the bot in the discord server
+### First-Time setup the bot in the discord server
 
 1. Go to the `#cloud-commander` channel
 2. Run `/setup-role <your_iam_role_arn>`
 3. Run `/set-region <your_aws_region>` (default: us-east-1)
 4. Run `/commands` to explore all supported commands
 
-## How the Bot Interacts with AWS Accounts
+## How the bot interacts with AWS accounts
 - When a user runs a bot command the bot reads the stored IAM role arn from roles.json.
 - It uses AWS STS assume_role() to get temporary credentials.
 - These credentials are used by boto3 to perform AWS actions on behalf of the user.
