@@ -1,6 +1,6 @@
 # Cloud Commander 🤖
 
-Cloud Commander is a powerful, secure and user-friendly Discord bot that lets users manage their AWS resources directly from a designated channel. It is built with Python, Boto3 and Discord.py.
+Cloud Commander is a powerful, secure and user-friendly discord bot that lets users manage their AWS resources directly from a discord channel. It is built with Python, Boto3 and Discord.py.
 
 ## Features
 
