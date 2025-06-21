@@ -10,8 +10,8 @@ Cloud Commander is a powerful, secure and user-friendly Discord bot that lets us
 - EBS & RDS: volume/status checks, metrics, start/stop RDS
 - S3 & Lambda: list buckets/functions, usage stats
 - CloudFormation support: list & describe stacks
-- Network insights: VPCs, Subnets, NACLs, Route Tables and much more
 - CloudWatch metrics
+- Network insights: VPCs, Subnets, NACLs, Route Tables and much more
 
 ## Project Structure
 
