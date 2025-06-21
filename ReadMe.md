@@ -58,7 +58,7 @@ Cloud Commander is a powerful, secure and user-friendly discord bot that lets us
   ]
 }
 ```
--Now the IAM user running the bot has permission to call `sts:AssumeRole` on the role we created.
+- Now the IAM user running the bot has permission to call `sts:AssumeRole` on the role we created.
 
 ### 2. Configure the Bot
 
