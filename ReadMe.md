@@ -24,10 +24,41 @@ Cloud Commander is a powerful, secure and user-friendly Discord bot that lets us
 
 ## Setup Instructions
 
-### 1. Create Your IAM Role
-
-- Create an IAM Role with the necessary AWS permissions
-- Enable `sts:AssumeRole` and note the Role ARN
+### 1. IAM Role + AWS STS Setup
+- Create an IAM role
+- Select entity type `AWS Account`
+- Name it something like `Awscommander_bot_handle`
+- Attach necessary permissions for the services you want to control (It can be done later also).
+- Edit Trust Policy and use this
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::<your_account_id>:user/<your_iam_user_name>"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+```
+- Attach this role to an IAM user (new or exsisting)
+- Create an inline policy
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "sts:AssumeRole",
+      "Resource": "arn:aws:iam::<your_account_id>:role/Awscommander_bot_handle"
+    }
+  ]
+}
+```
+-Now the IAM user running the bot has permission to call `sts:AssumeRole` on the role we created.
 
 ### 2. Configure the Bot
 
@@ -40,10 +71,10 @@ BOT_TOKEN=your_discord_bot_token
 ### 3. Install Dependencies
 
 Make sure you have Python 3.10+
-
+It is recommended to make a virtual environment and work inside that.
 ```bash
 python -m venv venv
-source venv/bin/activate  # or venv\Scripts\activate on Windows
+source venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
@@ -55,18 +86,15 @@ python bot.py
 
 ## Usage Guide
 
-### First-Time Setup
+### First-Time Setup the bot in the discord server
 
 1. Go to the `#cloud-commander` channel
 2. Run `/setup-role <your_iam_role_arn>`
-3. Run `/set-region <your_desired_region>` (default: us-east-1)
+3. Run `/set-region <your_aws_region>` (default: us-east-1)
 4. Run `/commands` to explore all supported commands
 
 ## How the Bot Interacts with AWS Accounts
-
-- Each user configures their own AWS IAM Role using `/setup-role <arn>`.
-- The role is stored temporarily in `roles.json` linked with Discord channel + user ID.
+- When a user runs a bot command the bot reads the stored IAM role arn from roles.json.
+- It uses AWS STS assume_role() to get temporary credentials.
+- These credentials are used by boto3 to perform AWS actions on behalf of the user.
 - When a user runs a command, the bot looks up their IAM Role and AWS region.
-- It uses `boto3` and AWS STS (`assume_role`) to obtain **temporary security credentials**.
-- These credentials are used to create short-lived AWS service clients.
-- All operations (start/stop/list/metrics) are performed using these temporary scoped credentials.
