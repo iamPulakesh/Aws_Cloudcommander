@@ -7,7 +7,7 @@ Cloud Commander is a powerful, secure and user-friendly discord bot that lets us
 - Secure IAM Role-based Access via AWS STS
 - Region-per-user support (`/set-region`, `/switch-region`)
 - EC2 management: list, start, stop, and metrics
-- EBS & RDS: volume/status checks, metrics, start/stop RDS
+- EBS & RDS: volume/status checks, metrics, DB start/stop
 - S3 & Lambda: list buckets/functions, usage stats
 - CloudFormation support: list & describe stacks
 - CloudWatch metrics
