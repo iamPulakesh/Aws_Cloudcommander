@@ -193,7 +193,7 @@ async def on_guild_join(guild):
     ))
     await setup_msg.pin()
 
-@bot.command(name='commands', description='List all available AWS commands')
+@bot.slash_command(name='commands', description='List all available AWS commands')
 @allowed_channel_only()
 @admin_only()
 async def list_commands(interaction: discord.Interaction):
@@ -212,7 +212,7 @@ async def list_commands(interaction: discord.Interaction):
     embed.add_field(name="Leave the server", value="`/leave-server`", inline=False)
     await interaction.response.send_message(embed=embed)
 
-@bot.command(name="leave-server", description="Bot will clean up and leave server.")
+@bot.slash_command(name="leave-server", description="Bot will clean up and leave server.")
 @discord.default_permissions(administrator=True)
 async def leave_server(interaction: discord.Interaction):
     await interaction.response.send_message(
@@ -261,7 +261,7 @@ async def leave_server(interaction: discord.Interaction):
         pass
    
 
-@bot.command(name='set-region', description='Set your default AWS region for this channel')
+@bot.slash_command(name='set-region', description='Set your default AWS region for this channel')
 @admin_only()
 @allowed_channel_only()
 async def set_region(interaction: discord.Interaction, region: str):
@@ -288,7 +288,7 @@ async def set_region(interaction: discord.Interaction, region: str):
         ),
         ephemeral=True)
 
-@bot.command(name='view-region', description='View your default AWS region for this channel')
+@bot.slash_command(name='view-region', description='View your default AWS region for this channel')
 @admin_only()
 @allowed_channel_only()
 async def view_region(interaction: discord.Interaction):
@@ -303,7 +303,7 @@ async def view_region(interaction: discord.Interaction):
         ephemeral=True
     )
 
-@bot.command(name='switch-region', description='Switch to another AWS region for this channel')
+@bot.slash_command(name='switch-region', description='Switch to another AWS region for this channel')
 @admin_only()
 @allowed_channel_only()
 async def switch_region(interaction: discord.Interaction, region: str):
@@ -330,7 +330,7 @@ async def switch_region(interaction: discord.Interaction, region: str):
         ),
         ephemeral=True)
 
-@bot.command(name='reset-region', description='Remove your saved AWS region for this channel')
+@bot.slash_command(name='reset-region', description='Remove your saved AWS region for this channel')
 @admin_only()
 @allowed_channel_only()
 async def reset_region(interaction: discord.Interaction):
@@ -359,7 +359,7 @@ async def reset_region(interaction: discord.Interaction):
                 color=discord.Color.orange()
             ), ephemeral=True)
 
-@bot.command(name='setup-role', description='Register your AWS IAM role ARN for this channel')
+@bot.slash_command(name='setup-role', description='Register your AWS IAM role ARN for this channel')
 @admin_only()
 @allowed_channel_only()
 async def setup_role(interaction: discord.Interaction, role_arn: str):
@@ -382,7 +382,7 @@ async def setup_role(interaction: discord.Interaction, role_arn: str):
             color=discord.Color.green()
         ), ephemeral=True)
 
-@bot.command(name='view-role', description='See your AWS role(s) for this channel')
+@bot.slash_command(name='view-role', description='See your AWS role(s) for this channel')
 @admin_only()
 @allowed_channel_only()
 async def view_role(interaction: discord.Interaction):
@@ -416,7 +416,7 @@ async def view_role(interaction: discord.Interaction):
         embed.add_field(name=f"Role {i+1}", value=arn, inline=False)
     await interaction.followup.send(embed=embed, ephemeral=True)
 
-@bot.command(name='remove-role', description='Remove all your IAM roles from this channel')
+@bot.slash_command(name='remove-role', description='Remove all your IAM roles from this channel')
 @admin_only()
 @allowed_channel_only()
 async def remove_role(interaction: discord.Interaction):
@@ -438,7 +438,7 @@ async def remove_role(interaction: discord.Interaction):
             embed=discord.Embed(description="You have no registered roles to remove.", color=discord.Color.orange()),
             ephemeral=True)
 
-@bot.command(name='ec2-list', description='List all EC2 instances')
+@bot.slash_command(name='ec2-list', description='List all EC2 instances')
 @admin_only()
 @allowed_channel_only()
 async def list_ec2_instances(interaction: discord.Interaction):
@@ -479,7 +479,7 @@ async def list_ec2_instances(interaction: discord.Interaction):
             ephemeral=True)
 
 
-@bot.command(name='ec2-start', description='Start an EC2 instance')
+@bot.slash_command(name='ec2-start', description='Start an EC2 instance')
 @admin_only()
 @allowed_channel_only()
 async def ec2_start(interaction: discord.Interaction, name: str):
@@ -503,7 +503,7 @@ async def ec2_start(interaction: discord.Interaction, name: str):
     except Exception as e:
         await interaction.followup.send(embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
 
-@bot.command(name='ec2-stop', description='Stop an EC2 instance')
+@bot.slash_command(name='ec2-stop', description='Stop an EC2 instance')
 @admin_only()
 @allowed_channel_only()
 async def ec2_stop(interaction: discord.Interaction, name: str):
@@ -527,7 +527,7 @@ async def ec2_stop(interaction: discord.Interaction, name: str):
     except Exception as e:
         await interaction.followup.send(embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
 
-@bot.command(name='ec2-metrics', description='Show EC2 CloudWatch metrics')
+@bot.slash_command(name='ec2-metrics', description='Show EC2 CloudWatch metrics')
 @admin_only()
 @allowed_channel_only()
 async def ec2_metrics(interaction: discord.Interaction, name: str):
@@ -594,7 +594,7 @@ async def ec2_metrics(interaction: discord.Interaction, name: str):
     except Exception as e:
         await interaction.followup.send(embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
 
-@bot.command(name='ebs-list', description='List EBS Volumes')
+@bot.slash_command(name='ebs-list', description='List EBS Volumes')
 @admin_only()
 @allowed_channel_only()
 async def ebs_list(interaction: discord.Interaction):
@@ -633,7 +633,7 @@ async def ebs_list(interaction: discord.Interaction):
     except Exception as e:
         await interaction.followup.send(embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
 
-@bot.command(name='rds-list', description='List RDS instances')
+@bot.slash_command(name='rds-list', description='List RDS instances')
 @admin_only()
 @allowed_channel_only()
 async def rds_list(interaction: discord.Interaction):
@@ -656,7 +656,7 @@ async def rds_list(interaction: discord.Interaction):
     except Exception as e:
         await interaction.followup.send(embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
 
-@bot.command(name='rds-start', description='Start an RDS instance')
+@bot.slash_command(name='rds-start', description='Start an RDS instance')
 @admin_only()
 @allowed_channel_only()
 async def rds_start(interaction: discord.Interaction, db_id: str):
@@ -673,7 +673,7 @@ async def rds_start(interaction: discord.Interaction, db_id: str):
     except Exception as e:
         await interaction.followup.send(embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
 
-@bot.command(name='rds-stop', description='Stop an RDS instance')
+@bot.slash_command(name='rds-stop', description='Stop an RDS instance')
 @admin_only()
 @allowed_channel_only()
 async def rds_stop(interaction: discord.Interaction, db_id: str):
@@ -690,7 +690,7 @@ async def rds_stop(interaction: discord.Interaction, db_id: str):
     except Exception as e:
         await interaction.followup.send(embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
 
-@bot.command(name='rds-metrics', description='Show RDS CloudWatch metrics')
+@bot.slash_command(name='rds-metrics', description='Show RDS CloudWatch metrics')
 @admin_only()
 @allowed_channel_only()
 async def rds_metrics(interaction: discord.Interaction, db_id: str):
@@ -750,7 +750,7 @@ async def rds_metrics(interaction: discord.Interaction, db_id: str):
     except Exception as e:
         await interaction.followup.send(embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
 
-@bot.command(name='s3-list', description='List all S3 buckets')
+@bot.slash_command(name='s3-list', description='List all S3 buckets')
 @admin_only()
 @allowed_channel_only()
 async def s3_list(interaction: discord.Interaction):
@@ -773,7 +773,7 @@ async def s3_list(interaction: discord.Interaction):
     except Exception as e:
         await interaction.followup.send(embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
 
-@bot.command(name='s3-metrics', description='Show S3 CloudWatch metrics')
+@bot.slash_command(name='s3-metrics', description='Show S3 CloudWatch metrics')
 @admin_only()
 @allowed_channel_only()
 async def s3_metrics(interaction: discord.Interaction, bucket_name: str):
@@ -838,7 +838,7 @@ async def s3_metrics(interaction: discord.Interaction, bucket_name: str):
     except Exception as e:
         await interaction.followup.send(embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
 
-@bot.command(name='lambda-list', description='List Lambda functions')
+@bot.slash_command(name='lambda-list', description='List Lambda functions')
 @admin_only()
 @allowed_channel_only()
 async def lambda_list(interaction: discord.Interaction):
@@ -866,7 +866,7 @@ async def lambda_list(interaction: discord.Interaction):
     except Exception as e:
         await interaction.followup.send(embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
 
-@bot.command(name='lambda-metrics', description='Show Lambda CloudWatch metrics')
+@bot.slash_command(name='lambda-metrics', description='Show Lambda CloudWatch metrics')
 @admin_only()
 @allowed_channel_only()
 async def lambda_metrics(interaction: discord.Interaction, function_name: str):
@@ -917,7 +917,7 @@ async def lambda_metrics(interaction: discord.Interaction, function_name: str):
     except Exception as e:
         await interaction.followup.send(embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
 
-@bot.command(name='network-status', description='Show complete network info')
+@bot.slash_command(name='network-status', description='Show complete network info')
 @admin_only()
 @allowed_channel_only()
 async def network_status(interaction: discord.Interaction):
@@ -968,7 +968,7 @@ async def network_status(interaction: discord.Interaction):
     except Exception as e:
         await interaction.followup.send(embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
 
-@bot.command(name='cf-list', description='List CloudFormation stacks')
+@bot.slash_command(name='cf-list', description='List CloudFormation stacks')
 @admin_only()
 @allowed_channel_only()
 async def cf_list(interaction: discord.Interaction):
@@ -999,7 +999,7 @@ async def cf_list(interaction: discord.Interaction):
         await interaction.followup.send(
             embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
 
-@bot.command(name='cf-describe', description='Describe a CloudFormation stack')
+@bot.slash_command(name='cf-describe', description='Describe a CloudFormation stack')
 @admin_only()
 @allowed_channel_only()
 async def cf_describe(interaction: discord.Interaction, stack_name: str):
