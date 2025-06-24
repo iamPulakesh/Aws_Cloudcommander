@@ -104,7 +104,7 @@ python bot.py
 
 --------------------------------------------------------------------------------------------------------------------------------
 
-# Docker-Based Setup Guide
+# Docker-Based Setup Guide (https://hub.docker.com/r/pulak0007/aws-commander)
 ## Prerequisite
 
 -	Docker Desktop
@@ -131,17 +131,17 @@ Configure AWS CLI (If not configured previously)
 -Fill with your AWS credientials.
 
 ### Step 4: Run it
-PowerShell:
+-PowerShell:
 ```
 docker run -it `
-  --name  container_name `
+  --name container_name `
   -v "$env:USERPROFILE\.aws:/root/.aws" `
-  --env-file  .env `
+  --env-file .env `
   -e AWS_PROFILE = your_aws_profile_name `
   pulak0007/aws-commander
 ```
 
-CMD:
+-CMD:
 ```
 docker run -it ^
   --name cloudcommander-bot ^
@@ -152,4 +152,4 @@ docker run -it ^
 ```
 
 ### Step 5:
-Invite the bot into the server
+-Invite the bot into the server
