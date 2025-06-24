@@ -101,3 +101,48 @@ python bot.py
 - It uses AWS STS assume_role() to get temporary credentials.
 - These credentials are used by boto3 to perform AWS actions on behalf of the user.
 - When a user runs a command, the bot looks up their IAM Role and AWS region.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+# Docker-Based Setup Guide
+##Prerequisite
+•	Docker Desktop installed
+•	AWS CLI installed and configured
+•	A Discord Bot Token 
+•	An .env file with your bot token
+
+##Setup instruction
+###Step 1: Create a Discord Bot
+
+1. Go to: `https://discord.com/developers/applications`
+2. Click "New Application"
+3. Go to the "Bot" section and click "Add Bot"
+4. Click "Reset Token" → "Copy" your bot token
+
+###Step 2: Create the .env File 
+``Set-Content .env "DISCORD_BOT_TOKEN=your-bot-token"``
+
+###Step 3: 
+Configure AWS CLI (If not configured previously)
+`aws configure --profile desired_profile_name`
+Fill with your AWS credientials.
+
+###Step 4: Run it
+PowerShell:
+``docker run -it `
+  --name  container_name `
+  -v "$env:USERPROFILE\.aws:/root/.aws" `
+  --env-file  .env `
+  -e AWS_PROFILE = your_aws_profile_name `
+  pulak0007/aws-commander
+``
+CMD:
+``docker run -it ^
+  --name cloudcommander-bot ^
+  -v %USERPROFILE%\.aws:/root/.aws ^
+  --env-file .env ^
+  -e AWS_PROFILE= your_aws_profile_name ^
+  pulak0007/aws-commander
+``
+Step 5:
+Invite the bot into the server
