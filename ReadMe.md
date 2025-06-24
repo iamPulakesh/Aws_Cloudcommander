@@ -110,12 +110,11 @@ python bot.py
 -	Docker Desktop
 - AWS CLI installed and configured
 -	A Discord Bot Token 
--	An .env file with your bot token
 
 ## Setup instruction
 ### Step 1: Create a Discord Bot
 
-1. Go to: `https://discord.com/developers/applications`
+1. Go to: https://discord.com/developers/applications
 2. Click "New Application"
 3. Go to the "Bot" section and click "Add Bot"
 4. Click "Reset Token" → "Copy" your bot token
