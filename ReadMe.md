@@ -28,12 +28,12 @@ Cloud Commander is a powerful, secure and user-friendly discord bot that lets us
 
 - Make sure you have Python 3.10+
 - It is recommended to make a virtual environment and work inside that.
-- AWS CLI installed and configured in your machine.
 ```bash
 python -m venv venv
 source venv\Scripts\activate
 pip install -r requirements.txt
 ```
+- AWS CLI installed and configured in your machine.
 
 ### 2. Configure the Bot
 
