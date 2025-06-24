@@ -127,10 +127,10 @@ python bot.py
 Configure AWS CLI (If not configured previously)
 
 `aws configure --profile desired_profile_name`
--Fill with your AWS credientials.
+- Fill with your AWS credientials.
 
 ### Step 4: Run it
--PowerShell:
+- PowerShell:
 ```
 docker run -it `
   --name container_name `
@@ -140,7 +140,7 @@ docker run -it `
   pulak0007/aws-commander
 ```
 
--CMD:
+- CMD:
 ```
 docker run -it ^
   --name cloudcommander-bot ^
@@ -151,4 +151,4 @@ docker run -it ^
 ```
 
 ### Step 5:
--Invite the bot into the server
+- Invite the bot into the server
