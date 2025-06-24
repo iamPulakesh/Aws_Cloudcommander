@@ -24,7 +24,27 @@ Cloud Commander is a powerful, secure and user-friendly discord bot that lets us
 
 ## Setup Instructions
 
-### 1. IAM Role + AWS STS Setup
+### 1. Install Dependencies
+
+- Make sure you have Python 3.10+
+- It is recommended to make a virtual environment and work inside that.
+- AWS CLI installed and configured in your machine.
+```bash
+python -m venv venv
+source venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+### 2. Configure the Bot
+
+Create a `.env` file inside the project directory and add:
+
+```env
+BOT_TOKEN=your_discord_bot_token
+```
+
+### 3. IAM Role + AWS STS Setup
+
 - Create an IAM role
 - Select entity type `AWS Account`
 - Name it something like `Awscommander_bot_handle`
@@ -60,23 +80,6 @@ Cloud Commander is a powerful, secure and user-friendly discord bot that lets us
 ```
 - Now the IAM user running the bot has permission to call `sts:AssumeRole` on the role we created.
 
-### 2. Configure the Bot
-
-Create a `.env` file and add:
-
-```env
-BOT_TOKEN=your_discord_bot_token
-```
-
-### 3. Install Dependencies
-
-- Make sure you have Python 3.10+
-- It is recommended to make a virtual environment and work inside that.
-```bash
-python -m venv venv
-source venv\Scripts\activate
-pip install -r requirements.txt
-```
 
 ### 4. Run the bot
 
