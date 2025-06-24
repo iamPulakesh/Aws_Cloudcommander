@@ -127,7 +127,7 @@ python bot.py
 Configure AWS CLI (If not configured previously)
 
 `aws configure --profile desired_profile_name`
-- Fill with your AWS credientials.
+- Fill with your AWS credentials.
 
 ### Step 4: Run it
 - PowerShell:
