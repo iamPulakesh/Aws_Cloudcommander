@@ -21,31 +21,16 @@ def get_assumed_clients(role_arn, region):
     )
     creds = assumed['Credentials']
 
+    services = ['ec2', 'cloudwatch', 's3', 'rds', 'lambda', 'cloudformation']
     return {
-        'ec2': boto3.client('ec2', region_name=region,
+        'cf' if svc == 'cloudformation' else svc: boto3.client(
+            svc,
+            region_name=region,
             aws_access_key_id=creds['AccessKeyId'],
             aws_secret_access_key=creds['SecretAccessKey'],
-            aws_session_token=creds['SessionToken']),
-        'cloudwatch': boto3.client('cloudwatch', region_name=region,
-            aws_access_key_id=creds['AccessKeyId'],
-            aws_secret_access_key=creds['SecretAccessKey'],
-            aws_session_token=creds['SessionToken']),
-        's3': boto3.client('s3', region_name=region,
-            aws_access_key_id=creds['AccessKeyId'],
-            aws_secret_access_key=creds['SecretAccessKey'],
-            aws_session_token=creds['SessionToken']),
-        'rds': boto3.client('rds', region_name=region,
-            aws_access_key_id=creds['AccessKeyId'],
-            aws_secret_access_key=creds['SecretAccessKey'],
-            aws_session_token=creds['SessionToken']),
-        'lambda': boto3.client('lambda', region_name=region,
-            aws_access_key_id=creds['AccessKeyId'],
-            aws_secret_access_key=creds['SecretAccessKey'],
-            aws_session_token=creds['SessionToken']),
-        'cf': boto3.client('cloudformation', region_name=region,
-            aws_access_key_id=creds['AccessKeyId'],
-            aws_secret_access_key=creds['SecretAccessKey'],
-            aws_session_token=creds['SessionToken'])
+            aws_session_token=creds['SessionToken']
+        )
+        for svc in services
     }
 
 def format_aws_error(e):
