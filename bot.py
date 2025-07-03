@@ -968,10 +968,7 @@ async def cf_list(interaction: discord.Interaction):
         cf = get_assumed_clients(role_arn, region)['cf']
         stacks = cf.describe_stacks().get('Stacks', [])
         if not stacks:
-            await interaction.followup.send(
-                embed=discord.Embed(description=" No CloudFormation stacks found.", color=discord.Color.orange()),
-                ephemeral=True
-            )
+            await interaction.followup.send(embed=discord.Embed(description=" No CloudFormation stacks found.", color=discord.Color.orange()), ephemeral=True)
             return
         embed = discord.Embed(title=" CloudFormation Stacks", color=discord.Color.teal())
         for s in stacks[:10]:
@@ -983,7 +980,6 @@ async def cf_list(interaction: discord.Interaction):
         if len(stacks) > 10:
             embed.add_field(name="...", value=f"And {len(stacks) - 10} more", inline=False)
         await interaction.followup.send(embed=embed, ephemeral=True)
-    
     except Exception as e:
         await interaction.followup.send(
             embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
