@@ -1,5 +1,5 @@
 import discord
-from utils import load_roles, save_roles
+from lib.utils import load_roles, save_roles
 
 ADMIN_ROLE = "CloudCommanderUser"
 
