@@ -1,6 +1,6 @@
 import discord
-from utils import get_user_role_arn, get_user_region, format_aws_error
-from aws_clients import get_assumed_clients
+from app.utils import get_user_role_arn, get_user_region, format_aws_error
+from app.aws_clients import get_assumed_clients
 from decorators import admin_only, allowed_channel_only
 from datetime import datetime, timedelta
 

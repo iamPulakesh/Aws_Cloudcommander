@@ -1,6 +1,6 @@
 import discord
-from utils import load_roles, save_roles, get_user_role_arn
-from decorators import admin_only, allowed_channel_only
+from app.utils import load_roles, save_roles, get_user_role_arn
+from app.decorators import admin_only, allowed_channel_only
 
 
 def register_role_commands(bot):

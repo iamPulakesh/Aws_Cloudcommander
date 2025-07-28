@@ -1,6 +1,6 @@
 import discord
-from utils import load_roles, save_roles
-from decorators import admin_only, allowed_channel_only
+from app.utils import load_roles, save_roles
+from app.decorators import admin_only, allowed_channel_only
 
 
 def register_misc_commands(bot):
