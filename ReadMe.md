@@ -143,7 +143,7 @@ python main.py
 
 ### Step 2: Create the .env File
 
-``Set-Content .env "DISCORD_BOT_TOKEN=your-bot-token"``
+``Set-Content .env "BOT_TOKEN=your-bot-token"``
 
 ### Step 3: 
 Configure AWS CLI (If not configured previously)
