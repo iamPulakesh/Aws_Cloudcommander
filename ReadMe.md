@@ -125,7 +125,8 @@ python main.py
 
 --------------------------------------------------------------------------------------------------------------------------------
 
-# Docker-Based Setup Guide (https://hub.docker.com/r/pulak0007/aws-commander)
+# Docker-Based Setup Guide 
+`docker pull pulak0007/aws-commander:latest`
 ## Prerequisite
 
 -	Docker Desktop
