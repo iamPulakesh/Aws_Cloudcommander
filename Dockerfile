@@ -10,5 +10,6 @@ COPY commands/ ./commands/
 COPY roles.json ./app/roles.json
 
 ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/app/app:/app
 
 CMD ["python", "app/main.py"]
