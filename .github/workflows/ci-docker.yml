@@ -2,7 +2,7 @@ name: CI/CD for Cloud Commander
 
 on:
   push:
-    branches: [test]
+    branches: [main, test]
 
 env:
   IMAGE_NAME: pulak0007/aws-commander
