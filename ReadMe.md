@@ -17,29 +17,30 @@ Cloud Commander is a powerful, secure and user-friendly discord bot that lets us
 
 ```
 Aws_Cloudcommander/
-├── main.py              
-├── requirements.txt       # Dependencies                
-├── roles.json             # Stores users-roles-regions
+|---app/
+│   ├── main.py                
+│   ├── utils.py               # Helper functions (roles, error formatting etc)
+│   ├── decorators.py          # Custom decorators
+│   ├── aws_clients.py         # AWS session helpers
+│---commands/              # All bot commands
+│       ├── __init__.py
+│       ├── onboarding.py      # Event handlers
+│       ├── ec2.py
+│       ├── rds.py
+│       ├── s3.py
+│       ├── lambda.py
+│       ├── cloudformation.py
+│       └── billing.py
+├── roles.json                 # Stores aws users roles and regions info
+├── requirements.txt           # Dependencies
 ├── Dockerfile
 ├── .dockerignore
 ├── .gitignore
-├── utils.py               # Some helper functions
-├── decorators.py          # Custom decorators
-├── aws_clients.py         # AWS session helpers
-│
-├── commands/              # All bot commands
-│   ├── __init__.py
-│   ├── onboarding.py      # event handlers
-│   ├── ec2.py
-│   ├── rds.py
-│   ├── s3.py
-│   ├── lambda.py
-│   ├── cloudformation.py
-│   ├── billing.py
-|
+├── LICENSE
+├── ReadMe.md
 └── .github/
     └── workflows/
-        └── ci-docker.yml  
+        └── ci-docker.yml
 ```
 
 ## Setup Instructions
