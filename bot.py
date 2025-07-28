@@ -457,7 +457,7 @@ async def list_ec2_instances(interaction: discord.Interaction):
                 name = next((t['Value'] for t in i.get('Tags', []) if t['Key'] == 'Name'), 'Unnamed')
                 embed.add_field(name=name, value=f"ID: `{instance_id}`\nStatus: **{state}**", inline=False)
 
-        await interaction.followup.send(embed=embed,ephemeral=True)
+        await interaction.followup.send(embed=embed, ephemeral=True)
 
     except Exception as e:
         await interaction.followup.send(
@@ -485,7 +485,7 @@ async def ec2_start(interaction: discord.Interaction, name: str):
             return
         instance_id = instance['InstanceId']
         ec2.start_instances(InstanceIds=[instance_id])
-        await interaction.followup.send(embed=discord.Embed(description=f" Started `{name}`", color=discord.Color.green()),ephemeral=True)
+        await interaction.followup.send(embed=discord.Embed(description=f" Started `{name}`", color=discord.Color.green()), ephemeral=True)
     except Exception as e:
         await interaction.followup.send(embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
 
@@ -509,7 +509,7 @@ async def ec2_stop(interaction: discord.Interaction, name: str):
             return
         instance_id = instance['InstanceId']
         ec2.stop_instances(InstanceIds=[instance_id])
-        await interaction.followup.send(embed=discord.Embed(description=f" Stopped `{name}`", color=discord.Color.red()),ephemeral=True)
+        await interaction.followup.send(embed=discord.Embed(description=f" Stopped `{name}`", color=discord.Color.red()), ephemeral=True)
     except Exception as e:
         await interaction.followup.send(embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
 
@@ -615,7 +615,7 @@ async def ebs_list(interaction: discord.Interaction):
                 ),
                 inline=False
             )
-        await interaction.followup.send(embed=embed,ephemeral=True)
+        await interaction.followup.send(embed=embed, ephemeral=True)
     except Exception as e:
         await interaction.followup.send(embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
 
@@ -638,7 +638,7 @@ async def rds_list(interaction: discord.Interaction):
         embed = discord.Embed(title=" RDS Instances", color=discord.Color.purple())
         for db in instances:
             embed.add_field(name=db['DBInstanceIdentifier'], value=f"Status: **{db['DBInstanceStatus']}**", inline=False)
-        await interaction.followup.send(embed=embed,ephemeral=True)
+        await interaction.followup.send(embed=embed, ephemeral=True)
     except Exception as e:
         await interaction.followup.send(embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
 
@@ -655,7 +655,7 @@ async def rds_start(interaction: discord.Interaction, db_id: str):
         region = get_user_region(interaction.guild_id, interaction.channel_id, interaction.user.id)
         rds = get_assumed_clients(role_arn, region)['rds']
         rds.start_db_instance(DBInstanceIdentifier=db_id)
-        await interaction.followup.send(embed=discord.Embed(description=f" Started `{db_id}`", color=discord.Color.green()),ephemeral=True)
+        await interaction.followup.send(embed=discord.Embed(description=f" Started `{db_id}`", color=discord.Color.green()), ephemeral=True)
     except Exception as e:
         await interaction.followup.send(embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
 
@@ -672,7 +672,7 @@ async def rds_stop(interaction: discord.Interaction, db_id: str):
         region = get_user_region(interaction.guild_id, interaction.channel_id, interaction.user.id)
         rds = get_assumed_clients(role_arn, region)['rds']
         rds.stop_db_instance(DBInstanceIdentifier=db_id)
-        await interaction.followup.send(embed=discord.Embed(description=f" Stopped `{db_id}`", color=discord.Color.red()),ephemeral=True)
+        await interaction.followup.send(embed=discord.Embed(description=f" Stopped `{db_id}`", color=discord.Color.red()), ephemeral=True)
     except Exception as e:
         await interaction.followup.send(embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
 
@@ -732,7 +732,7 @@ async def rds_metrics(interaction: discord.Interaction, db_id: str):
 
             embed.add_field(name=metric, value=value_display, inline=True)
 
-        await interaction.followup.send(embed=embed,ephemeral=True)
+        await interaction.followup.send(embed=embed, ephemeral=True)
     except Exception as e:
         await interaction.followup.send(embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
 
@@ -980,7 +980,7 @@ async def cf_list(interaction: discord.Interaction):
             )
         if len(stacks) > 10:
             embed.add_field(name="...", value=f"And {len(stacks) - 10} more", inline=False)
-        await interaction.followup.send(embed=embed,ephemeral=True)
+        await interaction.followup.send(embed=embed, ephemeral=True)
     except Exception as e:
         await interaction.followup.send(
             embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
@@ -1011,7 +1011,7 @@ async def cf_describe(interaction: discord.Interaction, stack_name: str):
             for o in outputs:
                 embed.add_field(name=o['OutputKey'], value=o['OutputValue'], inline=False)
 
-        await interaction.followup.send(embed=embed,ephemeral=True)
+        await interaction.followup.send(embed=embed, ephemeral=True)
     except Exception as e:
         await interaction.followup.send(
             embed=discord.Embed(description=format_aws_error(e), color=discord.Color.red()), ephemeral=True)
