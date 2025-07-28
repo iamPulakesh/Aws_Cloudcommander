@@ -17,26 +17,33 @@ Cloud Commander is a powerful, secure and user-friendly discord bot that lets us
 
 ```
 Aws_Cloudcommander/
-├── main.py              
-├── requirements.txt       # Dependencies                
-├── roles.json             # Stores users-roles-regions
+├── main.py                   # Main entry point             
+├── requirements.txt          # Dependencies                
+├── roles.json                # Stores users-roles-regions
 ├── Dockerfile
 ├── .dockerignore
 ├── .gitignore
-├── utils.py               # Some helper functions
-├── decorators.py          # Custom decorators
-├── aws_clients.py         # AWS session helpers
 │
-├── commands/              # All bot commands
+├── lib/                      # Utility modules
 │   ├── __init__.py
-│   ├── onboarding.py      # event handlers
-│   ├── ec2.py
-│   ├── rds.py
-│   ├── s3.py
-│   ├── lambda.py
-│   ├── cloudformation.py
-│   ├── billing.py
-|
+│   ├── aws_clients.py        # AWS session helpers
+│   ├── decorators.py         # Custom decorators
+│   └── utils.py              # Helper functions
+│
+├── commands/                 # All bot commands
+│   ├── billing_commands.py   # Billing and cost management
+│   ├── cf_commands.py        # CloudFormation operations
+│   ├── ebs_commands.py       # EBS volume management
+│   ├── ec2_commands.py       # EC2 instance management
+│   ├── lambda_commands.py    # Lambda function operations
+│   ├── misc_commands.py      # Miscellaneous commands
+│   ├── network_commands.py   # VPC, subnet, security groups
+│   ├── onboarding.py         # Bot setup and event handlers
+│   ├── rds_commands.py       # RDS database management
+│   ├── region_commands.py    # Region management
+│   ├── role_commands.py      # IAM role management
+│   └── s3_commands.py        # S3 bucket operations
+│
 └── .github/
     └── workflows/
         └── ci-docker.yml  
