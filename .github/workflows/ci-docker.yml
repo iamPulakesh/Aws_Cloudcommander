@@ -1,4 +1,4 @@
-name: CI/CD for Cloud Commander
+name: Pipeline for Docker build and Push
 
 on:
   push:
