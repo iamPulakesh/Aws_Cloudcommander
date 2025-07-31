@@ -14,7 +14,7 @@ def register_ec2_commands(bot):
         role_arn = get_user_role_arn(interaction.guild_id, interaction.channel_id, interaction.user.id)
         if not role_arn:
             await interaction.followup.send(
-                embed=discord.Embed(description="No IAM role configured for this server.", color=discord.Color.red()),
+                embed=discord.Embed(description="No IAM roles configured for this server.", color=discord.Color.red()),
                 ephemeral=True)
             return
         try:
