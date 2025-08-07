@@ -105,7 +105,7 @@ BOT_TOKEN=your_discord_bot_token
 ### 4. Run the bot
 
 ```bash
-python main.py
+python -m app.main
 ```
 
 ## Usage guide

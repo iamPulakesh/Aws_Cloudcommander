@@ -1,6 +1,6 @@
 import discord
 from functools import wraps
-from utils import load_roles
+from app.utils import load_roles
 
 def admin_only():
     def decorator(func):
