@@ -19,16 +19,15 @@ def register_alert_commands(bot):
     async def setup_alert_command(interaction: discord.Interaction):
         guild = interaction.guild
         if not guild:
-            await interaction.response.send_message("This command must be run in a server.", ephemeral=True)
+            await interaction.response.send_message(embed=discord.Embed(description="This command must be run in a server.", color=discord.Color.yellow()), ephemeral=True)
             return
         guild_id = guild.id
         if guild_id in enabled_alert_guilds:
-            await interaction.response.send_message("Alerts are already enabled for this server.", ephemeral=True)
+            await interaction.response.send_message(embed=discord.Embed(description="AWS billing alerts are already enabled for this server!", color=discord.Color.green()), ephemeral=True)
             return
         setup_alerts(bot, guild_id)
         enabled_alert_guilds.add(guild_id)
-        await interaction.response.send_message(
-            "AWS billing alerts are now enabled for this server! You will receive notifications in the #cloud-commander channel.",
+        await interaction.response.send_message(embed=discord.Embed(description="AWS billing alerts are now enabled for this server!", color=discord.Color.red()),
             ephemeral=True
         )
 
