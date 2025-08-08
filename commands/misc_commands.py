@@ -21,6 +21,7 @@ def register_misc_commands(bot):
         embed.add_field(name="Networking", value="`/network-status`", inline=False)
         embed.add_field(name="Billing & Cost", value="`/billing-summary`", inline=False)
         embed.add_field(name="Leave the server", value="`/leave-server`", inline=False)
+        embed.add_field(name="Alerts", value="`/setup-alert`", inline=False)
         await interaction.response.send_message(embed=embed)
 
     @bot.slash_command(name="leave-server", description="Bot will clean up and leave server.")

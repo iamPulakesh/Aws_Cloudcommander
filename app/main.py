@@ -1,7 +1,7 @@
 import os
 import discord
 from dotenv import load_dotenv
-
+from commands.alerts import setup_alerts, register_alert_commands
 from commands.onboarding import register_onboarding_events
 from commands.misc_commands import register_misc_commands
 from commands.region_commands import register_region_commands
@@ -36,5 +36,6 @@ register_cf_commands(bot)
 register_ebs_commands(bot)
 register_network_commands(bot)
 register_billing_commands(bot)
+register_alert_commands(bot)
 
 bot.run(TOKEN)
