@@ -59,8 +59,12 @@ def setup_alerts(bot, guild_id):
         if not member:
             return
         role_arn = get_user_role_arn(guild.id, channel.id, member.id)
+        if not role_arn:
+            await channel.send("No IAM role configured for this server. Please set up a role to enable billing alerts.")
+            return
         region = get_user_region(guild.id, channel.id, member.id)
-        if not role_arn or not region:
+        if not region:
+            await channel.send("No AWS region configured for this server. Please set up a region to enable billing alerts.")
             return
         try:
             total = await get_total_cost(role_arn, region)
