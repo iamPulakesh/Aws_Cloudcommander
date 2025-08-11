@@ -17,6 +17,8 @@ def save_roles(data):
 def get_user_role_arn(guild_id, channel_id, user_id):
     roles = load_roles()
     user_data = roles.get(str(guild_id), {}).get(str(channel_id), {}).get(str(user_id))
+    if user_data is None:
+        return None
     if isinstance(user_data, list): 
         return user_data[0] if user_data else None
     return user_data.get("roles", [None])[0]
