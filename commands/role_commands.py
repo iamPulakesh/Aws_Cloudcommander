@@ -1,5 +1,5 @@
 import discord
-from app.utils import load_roles, save_roles, get_user_role_arn
+from app.utils import load_roles, save_roles
 from app.decorators import admin_only, allowed_channel_only
 
 
