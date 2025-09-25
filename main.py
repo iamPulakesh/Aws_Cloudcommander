@@ -1,6 +1,8 @@
 import os
 import discord
 from dotenv import load_dotenv
+
+# Command / event registration helpers
 from commands.alerts import register_alert_commands
 from commands.onboarding import register_onboarding_events
 from commands.misc_commands import register_misc_commands
@@ -17,6 +19,9 @@ from commands.billing_commands import register_billing_commands
 
 load_dotenv()
 TOKEN = os.getenv("BOT_TOKEN")
+
+if not TOKEN:
+    raise SystemExit("BOT_TOKEN not found in environment. Set it before running the bot.")
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -38,4 +43,5 @@ register_network_commands(bot)
 register_billing_commands(bot)
 register_alert_commands(bot)
 
-bot.run(TOKEN)
+if __name__ == "__main__":
+    bot.run(TOKEN)

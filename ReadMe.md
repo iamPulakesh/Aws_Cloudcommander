@@ -17,20 +17,26 @@ Cloud Commander is a powerful, secure and user-friendly discord bot that lets us
 
 ```
 Aws_Cloudcommander/
-|---app/
-│   ├── main.py                
+├── main.py                    
+├── app/
 │   ├── utils.py               # Helper functions (roles, error formatting etc)
 │   ├── decorators.py          # Custom decorators
 │   ├── aws_clients.py         # AWS session helpers
-│---commands/              # All bot commands
-│       ├── __init__.py
-│       ├── onboarding.py      # Event handlers
-│       ├── ec2.py
-│       ├── rds.py
-│       ├── s3.py
-│       ├── lambda.py
-│       ├── cloudformation.py
-│       └── billing.py
+│   └── __init__.py
+├── commands/                  # All bot command registrations & events
+│   ├── onboarding.py          # Event handlers
+│   ├── ec2_commands.py
+│   ├── rds_commands.py
+│   ├── s3_commands.py
+│   ├── lambda_commands.py
+│   ├── cf_commands.py
+│   ├── ebs_commands.py
+│   ├── network_commands.py
+│   ├── billing_commands.py
+│   ├── region_commands.py
+│   ├── role_commands.py
+│   ├── alerts.py
+│   └── misc_commands.py
 ├── roles.json                 # Stores aws users roles and regions info
 ├── requirements.txt           # Dependencies
 ├── Dockerfile
@@ -39,8 +45,8 @@ Aws_Cloudcommander/
 ├── LICENSE
 ├── ReadMe.md
 └── .github/
-    └── workflows/
-        └── ci-docker.yml
+  └── workflows/
+    └── ci-docker.yml
 ```
 
 ## Setup Instructions
@@ -104,8 +110,10 @@ BOT_TOKEN=your_discord_bot_token
 
 ### 4. Run the bot
 
+Run:
+
 ```bash
-python -m app.main
+python main.py
 ```
 
 ## Usage guide
